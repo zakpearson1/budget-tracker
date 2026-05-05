@@ -21,12 +21,9 @@
     --rule: #2a221e;
     --accent: #c8421f;
     --accent-soft: #e8a892;
-    --green: #4a6b3a;
     --muted: #6b6058;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
   body {
     background: var(--paper);
     color: var(--ink);
@@ -37,356 +34,348 @@
       radial-gradient(circle at 20% 10%, rgba(200,66,31,0.05) 0%, transparent 40%),
       radial-gradient(circle at 80% 90%, rgba(74,107,58,0.05) 0%, transparent 40%);
   }
-
   .container { max-width: 720px; margin: 0 auto; }
-
-  header {
-    border-bottom: 2px solid var(--rule);
-    padding-bottom: 16px;
-    margin-bottom: 24px;
-  }
+  header { border-bottom: 2px solid var(--rule); padding-bottom: 16px; margin-bottom: 24px; }
   .masthead {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
     margin-bottom: 6px;
   }
   h1 {
-    font-family: 'Fraunces', serif;
-    font-weight: 800;
-    font-size: clamp(44px, 12vw, 72px);
-    letter-spacing: -0.04em;
-    line-height: 0.9;
-    font-style: italic;
+    font-family: 'Fraunces', serif; font-weight: 800;
+    font-size: clamp(44px, 12vw, 72px); letter-spacing: -0.04em;
+    line-height: 0.9; font-style: italic;
   }
   .tagline {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
-    margin-top: 8px;
-    letter-spacing: 0.08em;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); margin-top: 8px; letter-spacing: 0.08em;
   }
-
   .summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-bottom: 10px;
   }
   .card {
-    background: var(--paper-dark);
-    border: 1.5px solid var(--rule);
+    background: var(--paper-dark); border: 1.5px solid var(--rule);
     padding: 14px 14px 12px;
   }
   .card-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 6px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 6px;
   }
   .card-value {
-    font-family: 'Fraunces', serif;
-    font-weight: 600;
-    font-size: 28px;
-    letter-spacing: -0.02em;
-    line-height: 1;
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 28px; letter-spacing: -0.02em; line-height: 1;
   }
   .card-sub {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); margin-top: 4px;
+  }
+  .projection {
+    background: var(--ink); color: var(--paper);
+    border: 1.5px solid var(--rule);
+    padding: 14px 16px; margin-bottom: 24px;
+  }
+  .proj-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent-soft); margin-bottom: 6px;
+  }
+  .proj-row { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+  .proj-value {
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 600;
+    font-size: 26px; letter-spacing: -0.02em; line-height: 1;
+  }
+  .proj-period {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--accent-soft); letter-spacing: 0.1em; text-transform: uppercase;
     margin-top: 4px;
   }
-
+  .proj-sub {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: rgba(232,168,146,0.7); margin-top: 8px;
+  }
   .add-form {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 18px 16px;
-    margin-bottom: 28px;
+    background: var(--ink); color: var(--paper);
+    padding: 18px 16px; margin-bottom: 12px;
     border: 1.5px solid var(--rule);
   }
   .form-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    opacity: 0.7;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    margin-bottom: 14px; opacity: 0.7;
   }
   .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-bottom: 10px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px; margin-bottom: 10px;
   }
   .form-row.full { grid-template-columns: 1fr; }
   .field { display: flex; flex-direction: column; }
   .field label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent-soft);
-    margin-bottom: 4px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-soft); margin-bottom: 4px;
   }
   input, select {
-    background: transparent;
-    border: none;
+    background: transparent; border: none;
     border-bottom: 1px solid var(--accent-soft);
-    color: var(--paper);
-    font-family: 'Fraunces', serif;
-    font-size: 17px;
-    padding: 6px 0;
-    outline: none;
-    width: 100%;
-    border-radius: 0;
+    color: var(--paper); font-family: 'Fraunces', serif;
+    font-size: 17px; padding: 6px 0; outline: none;
+    width: 100%; border-radius: 0;
   }
   input:focus, select:focus { border-bottom-color: var(--accent); }
   input::placeholder { color: rgba(232,168,146,0.4); }
   select option { background: var(--ink); color: var(--paper); }
-
-  button {
-    background: var(--accent);
-    color: var(--paper);
-    border: none;
-    padding: 14px;
+  .primary-btn {
+    background: var(--accent); color: var(--paper);
+    border: none; padding: 14px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    width: 100%;
-    margin-top: 12px;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    width: 100%; margin-top: 12px; cursor: pointer;
+    font-weight: 500; transition: background 0.2s;
   }
-  button:hover { background: #a83417; }
-
+  .primary-btn:hover { background: #a83417; }
+  .manage-link {
+    display: block; text-align: center;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 28px;
+    cursor: pointer; text-decoration: underline;
+    text-underline-offset: 4px; padding: 8px;
+    background: transparent; border: none; width: 100%;
+  }
+  .manage-link:hover { color: var(--accent); }
+  .manage-panel {
+    display: none;
+    background: var(--paper-dark);
+    border: 1.5px solid var(--rule);
+    padding: 18px 16px; margin-bottom: 28px;
+  }
+  .manage-panel.open { display: block; }
+  .manage-title {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 600; font-size: 20px; margin-bottom: 4px;
+  }
+  .manage-sub {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: var(--muted); margin-bottom: 16px; letter-spacing: 0.05em;
+  }
+  .add-cat-row, .add-sub-row {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 8px; margin-bottom: 12px; align-items: end;
+  }
+  .add-sub-row { grid-template-columns: 1fr 1fr auto; }
+  .manage-panel input, .manage-panel select {
+    color: var(--ink); border-bottom-color: var(--rule);
+    font-size: 15px;
+  }
+  .manage-panel input::placeholder { color: rgba(42,34,30,0.35); }
+  .manage-panel select option { background: var(--paper); color: var(--ink); }
+  .manage-panel .field label { color: var(--muted); }
+  .mini-btn {
+    background: var(--ink); color: var(--paper);
+    border: none; padding: 0 14px; margin: 0;
+    width: auto; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; height: 36px;
+  }
+  .mini-btn:hover { background: var(--accent); }
+  .cat-manage-list { margin-top: 20px; }
+  .cat-manage-section {
+    border-top: 1px solid rgba(42,34,30,0.2);
+    padding-top: 12px; margin-top: 12px;
+  }
+  .cat-manage-section:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+  .cat-manage-head {
+    display: flex; align-items: baseline;
+    justify-content: space-between; margin-bottom: 6px; gap: 8px;
+  }
+  .cat-manage-name {
+    font-family: 'Fraunces', serif; font-weight: 600;
+    font-size: 15px;
+  }
+  .cat-manage-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; color: var(--muted);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .sub-pill-wrap {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    margin-top: 4px; margin-bottom: 4px;
+  }
+  .sub-pill {
+    background: var(--paper); border: 1px solid var(--rule);
+    padding: 4px 8px 4px 10px;
+    font-family: 'Fraunces', serif; font-size: 13px;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+  .sub-pill-x {
+    background: transparent; color: var(--muted);
+    border: none; padding: 0; margin: 0; width: auto;
+    font-family: inherit;
+    font-size: 16px; line-height: 1; letter-spacing: 0;
+    cursor: pointer; opacity: 0.5; height: auto;
+  }
+  .sub-pill-x:hover { opacity: 1; color: var(--accent); }
+  .del-cat-btn {
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--muted); padding: 4px 10px;
+    margin: 0; width: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; height: auto;
+  }
+  .del-cat-btn:hover { background: var(--accent); color: var(--paper); border-color: var(--accent); }
   .section-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 6px;
-    margin-bottom: 14px;
-    margin-top: 4px;
+    display: flex; align-items: baseline; justify-content: space-between;
+    border-bottom: 1px solid var(--rule); padding-bottom: 6px;
+    margin-bottom: 14px; margin-top: 4px;
   }
   .section-title {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 22px;
-    letter-spacing: -0.01em;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 600; font-size: 22px; letter-spacing: -0.01em;
   }
   .section-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted);
   }
-
   .categories { margin-bottom: 32px; }
   .cat-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px dotted rgba(42,34,30,0.2);
-    gap: 12px;
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: center; padding: 10px 0;
+    border-bottom: 1px dotted rgba(42,34,30,0.2); gap: 12px;
   }
-  .cat-name {
-    font-family: 'Fraunces', serif;
-    font-size: 15px;
-    font-weight: 400;
-  }
+  .cat-name { font-family: 'Fraunces', serif; font-size: 15px; font-weight: 400; }
   .cat-bar-wrap {
-    grid-column: 1 / -1;
-    height: 4px;
+    grid-column: 1 / -1; height: 4px;
     background: rgba(42,34,30,0.08);
-    margin-top: 6px;
-    position: relative;
+    margin-top: 6px; position: relative;
   }
-  .cat-bar {
-    height: 100%;
-    background: var(--accent);
-    transition: width 0.5s ease;
-  }
+  .cat-bar { height: 100%; background: var(--accent); transition: width 0.5s ease; }
   .cat-amount {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    font-weight: 500;
-    text-align: right;
+    font-family: 'JetBrains Mono', monospace; font-size: 13px;
+    font-weight: 500; text-align: right;
   }
   .cat-pct {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    color: var(--muted);
-    text-align: right;
-    grid-column: 2;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    color: var(--muted); text-align: right; grid-column: 2;
   }
-
   .day-group { margin-bottom: 22px; }
   .day-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 8px;
-    padding-bottom: 4px;
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px; padding-bottom: 4px;
     border-bottom: 1px solid var(--rule);
   }
-  .day-date {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 18px;
-    font-weight: 600;
-  }
-  .day-total {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-  }
+  .day-date { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; font-weight: 600; }
+  .day-total { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; }
   .txn {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 0;
+    display: grid; grid-template-columns: 1fr auto auto;
+    align-items: center; gap: 10px; padding: 10px 0;
     border-bottom: 1px dotted rgba(42,34,30,0.15);
   }
   .txn-main { min-width: 0; }
   .txn-desc {
-    font-family: 'Fraunces', serif;
-    font-size: 16px;
-    font-weight: 400;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-family: 'Fraunces', serif; font-size: 16px; font-weight: 400;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
   .txn-cat {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); margin-top: 2px;
   }
-  .txn-amount {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
-  }
+  .txn-amount { font-family: 'JetBrains Mono', monospace; font-size: 14px; font-weight: 500; white-space: nowrap; }
   .txn-del {
-    background: transparent;
-    color: var(--muted);
-    border: none;
-    padding: 4px 6px;
-    margin: 0;
+    background: transparent; color: var(--muted);
+    border: none; padding: 4px 6px; margin: 0;
     width: auto;
-    font-size: 16px;
-    letter-spacing: 0;
-    cursor: pointer;
-    opacity: 0.4;
-    transition: opacity 0.2s, color 0.2s;
+    font-family: inherit;
+    font-size: 18px; letter-spacing: 0;
+    cursor: pointer; opacity: 0.4; transition: opacity 0.2s, color 0.2s;
+    height: auto;
   }
-  .txn-del:hover {
-    opacity: 1;
-    color: var(--accent);
-    background: transparent;
-  }
-
-  .empty {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--muted);
-  }
+  .txn-del:hover { opacity: 1; color: var(--accent); }
+  .empty { text-align: center; padding: 40px 20px; color: var(--muted); }
   .empty-mark {
-    font-family: 'Fraunces', serif;
-    font-style: italic;
-    font-size: 36px;
-    margin-bottom: 8px;
-    opacity: 0.4;
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-size: 36px; margin-bottom: 8px; opacity: 0.4;
   }
-  .empty p {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-
-  .filter-bar {
-    display: flex;
-    gap: 6px;
-    margin-bottom: 14px;
-    flex-wrap: wrap;
-  }
+  .empty p { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; }
+  .filter-bar { display: flex; gap: 6px; margin-bottom: 14px; flex-wrap: wrap; }
   .chip {
-    background: transparent;
-    border: 1px solid var(--rule);
+    background: transparent; border: 1px solid var(--rule);
     padding: 6px 12px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--ink);
-    width: auto;
-    margin: 0;
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    cursor: pointer; color: var(--ink); width: auto; margin: 0;
+    height: auto;
   }
-  .chip.active {
-    background: var(--ink);
-    color: var(--paper);
-  }
+  .chip.active { background: var(--ink); color: var(--paper); }
   .chip:hover { background: rgba(42,34,30,0.08); }
   .chip.active:hover { background: var(--ink); }
-
   .toast {
-    position: fixed;
-    bottom: 24px;
-    left: 50%;
+    position: fixed; bottom: 24px; left: 50%;
     transform: translateX(-50%) translateY(80px);
-    background: var(--ink);
-    color: var(--paper);
-    padding: 12px 20px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    transition: transform 0.3s ease;
-    z-index: 100;
+    background: var(--ink); color: var(--paper);
+    padding: 12px 20px; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: transform 0.3s ease; z-index: 100;
     border: 1px solid var(--accent);
   }
   .toast.show { transform: translateX(-50%) translateY(0); }
-
   .reset-link {
-    text-align: center;
-    margin-top: 24px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    cursor: pointer;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    text-align: center; margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted); cursor: pointer;
+    text-decoration: underline; text-underline-offset: 4px;
   }
   .reset-link:hover { color: var(--accent); }
-
   .loading {
-    text-align: center;
-    padding: 40px;
-    color: var(--muted);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
+    text-align: center; padding: 40px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em;
   }
+  /* Custom confirm modal — needed because iOS standalone web apps block native confirm() */
+  .modal-bg {
+    position: fixed; inset: 0;
+    background: rgba(26,22,20,0.7);
+    display: none; align-items: center; justify-content: center;
+    z-index: 200; padding: 20px;
+  }
+  .modal-bg.show { display: flex; }
+  .modal-box {
+    background: var(--paper);
+    border: 1.5px solid var(--rule);
+    padding: 24px 22px;
+    max-width: 380px; width: 100%;
+  }
+  .modal-h {
+    font-family: 'Fraunces', serif; font-style: italic;
+    font-weight: 600; font-size: 22px;
+    margin-bottom: 10px; line-height: 1.1;
+  }
+  .modal-p {
+    font-family: 'Fraunces', serif; font-size: 15px;
+    color: var(--ink); line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .modal-btns {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .modal-btns button {
+    margin: 0; padding: 12px 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    cursor: pointer; border: none; height: auto;
+  }
+  .modal-no {
+    background: transparent; color: var(--ink);
+    border: 1.5px solid var(--rule);
+  }
+  .modal-no:hover { background: var(--paper-dark); }
+  .modal-yes { background: var(--accent); color: var(--paper); }
+  .modal-yes:hover { background: #a83417; }
 </style>
 </head>
 <body>
@@ -413,6 +402,21 @@
     </div>
   </div>
 
+  <div class="projection">
+    <div class="proj-label">Projected at this pace</div>
+    <div class="proj-row">
+      <div>
+        <div class="proj-value" id="proj-month">£0.00</div>
+        <div class="proj-period">By month-end</div>
+      </div>
+      <div style="text-align: right;">
+        <div class="proj-value" id="proj-week">£0.00</div>
+        <div class="proj-period">Per week</div>
+      </div>
+    </div>
+    <div class="proj-sub" id="proj-sub">Add some entries to see projections.</div>
+  </div>
+
   <div class="add-form">
     <div class="form-title">— New entry</div>
     <div class="form-row">
@@ -422,20 +426,15 @@
       </div>
       <div class="field">
         <label for="category">Category</label>
-        <select id="category">
-          <option value="Groceries">Groceries</option>
-          <option value="Eating Out">Eating Out</option>
-          <option value="Transport">Transport</option>
-          <option value="Bills">Bills</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Health">Health</option>
-          <option value="Coffee">Coffee</option>
-          <option value="Subscriptions">Subscriptions</option>
-          <option value="Gifts">Gifts</option>
-          <option value="Other">Other</option>
-        </select>
+        <select id="category"></select>
       </div>
+    </div>
+    <div class="form-row" id="subcat-row" style="display: none;">
+      <div class="field">
+        <label for="subcategory">Sub-category (optional)</label>
+        <select id="subcategory"></select>
+      </div>
+      <div></div>
     </div>
     <div class="form-row full">
       <div class="field">
@@ -449,7 +448,36 @@
         <input type="date" id="date" />
       </div>
     </div>
-    <button id="add-btn">Record entry</button>
+    <button type="button" class="primary-btn" id="add-btn">Record entry</button>
+  </div>
+
+  <button type="button" class="manage-link" id="manage-toggle">Manage categories ↓</button>
+
+  <div class="manage-panel" id="manage-panel">
+    <div class="manage-title">Categories</div>
+    <div class="manage-sub">Add your own, organise sub-categories, remove what you don't use.</div>
+
+    <div class="add-cat-row">
+      <div class="field">
+        <label>New category name</label>
+        <input type="text" id="new-cat-name" placeholder="e.g. Travel, Pets, Hobbies" maxlength="30" />
+      </div>
+      <button type="button" class="mini-btn" id="add-cat-btn">Add</button>
+    </div>
+
+    <div class="add-sub-row">
+      <div class="field">
+        <label>Add sub-category to</label>
+        <select id="sub-parent"></select>
+      </div>
+      <div class="field">
+        <label>Sub-category name</label>
+        <input type="text" id="new-sub-name" placeholder="e.g. Lunch, Petrol" maxlength="30" />
+      </div>
+      <button type="button" class="mini-btn" id="add-sub-btn">Add</button>
+    </div>
+
+    <div class="cat-manage-list" id="cat-manage-list"></div>
   </div>
 
   <div class="categories">
@@ -458,10 +486,7 @@
       <div class="section-meta">This month</div>
     </div>
     <div id="categories-list">
-      <div class="empty">
-        <div class="empty-mark">—</div>
-        <p>Nothing yet</p>
-      </div>
+      <div class="empty"><div class="empty-mark">—</div><p>Nothing yet</p></div>
     </div>
   </div>
 
@@ -471,10 +496,10 @@
   </div>
 
   <div class="filter-bar">
-    <button class="chip active" data-filter="all">All time</button>
-    <button class="chip" data-filter="today">Today</button>
-    <button class="chip" data-filter="week">7 days</button>
-    <button class="chip" data-filter="month">This month</button>
+    <button type="button" class="chip active" data-filter="all">All time</button>
+    <button type="button" class="chip" data-filter="today">Today</button>
+    <button type="button" class="chip" data-filter="week">7 days</button>
+    <button type="button" class="chip" data-filter="month">This month</button>
   </div>
 
   <div id="transactions">
@@ -484,11 +509,32 @@
   <div class="reset-link" id="reset-btn">Clear all data</div>
 </div>
 
+<div class="modal-bg" id="modal-bg">
+  <div class="modal-box">
+    <div class="modal-h" id="modal-h">Confirm</div>
+    <div class="modal-p" id="modal-p"></div>
+    <div class="modal-btns">
+      <button type="button" class="modal-no" id="modal-no">Cancel</button>
+      <button type="button" class="modal-yes" id="modal-yes">Confirm</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast">Saved</div>
 
 <script>
+  'use strict';
   const STORAGE_KEY = 'ledger:transactions';
+  const CATEGORIES_KEY = 'ledger:categories';
+
+  const DEFAULT_CATEGORIES = {
+    'Groceries': [], 'Eating Out': [], 'Transport': [], 'Bills': [],
+    'Shopping': [], 'Entertainment': [], 'Health': [], 'Coffee': [],
+    'Subscriptions': [], 'Gifts': [], 'Other': []
+  };
+
   let transactions = [];
+  let categories = {};
   let currentFilter = 'all';
 
   const fmt = (n) => '£' + Number(n).toFixed(2);
@@ -501,22 +547,61 @@
     setTimeout(() => t.classList.remove('show'), 1800);
   }
 
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  // Modal confirm — replaces native confirm() which iOS standalone PWA mode blocks.
+  function showConfirm(title, body) {
+    return new Promise((resolve) => {
+      const bg = document.getElementById('modal-bg');
+      document.getElementById('modal-h').textContent = title;
+      document.getElementById('modal-p').textContent = body;
+      const yes = document.getElementById('modal-yes');
+      const no = document.getElementById('modal-no');
+
+      const close = (result) => {
+        bg.classList.remove('show');
+        yes.removeEventListener('click', onYes);
+        no.removeEventListener('click', onNo);
+        bg.removeEventListener('click', onBg);
+        resolve(result);
+      };
+      const onYes = () => close(true);
+      const onNo = () => close(false);
+      const onBg = (e) => { if (e.target === bg) close(false); };
+
+      yes.addEventListener('click', onYes);
+      no.addEventListener('click', onNo);
+      bg.addEventListener('click', onBg);
+      bg.classList.add('show');
+    });
+  }
+
   function loadData() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
       transactions = raw ? JSON.parse(raw) : [];
-    } catch (e) {
-      transactions = [];
-    }
-    render();
+    } catch (e) { transactions = []; }
+
+    try {
+      const raw = localStorage.getItem(CATEGORIES_KEY);
+      categories = raw ? JSON.parse(raw) : Object.assign({}, DEFAULT_CATEGORIES);
+    } catch (e) { categories = Object.assign({}, DEFAULT_CATEGORIES); }
+
+    if (!categories['Other']) categories['Other'] = [];
+    saveCategories();
+    renderAll();
   }
 
   function saveData() {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
-    } catch (e) {
-      showToast('Save failed');
-    }
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions)); }
+    catch (e) { showToast('Save failed'); }
+  }
+  function saveCategories() {
+    try { localStorage.setItem(CATEGORIES_KEY, JSON.stringify(categories)); }
+    catch (e) { showToast('Save failed'); }
   }
 
   function formatDate(iso) {
@@ -533,19 +618,184 @@
     const now = new Date();
     const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0,10);
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
-
     if (currentFilter === 'today') return transactions.filter(t => t.date === today);
     if (currentFilter === 'week') return transactions.filter(t => t.date >= weekAgo);
     if (currentFilter === 'month') return transactions.filter(t => t.date >= monthStart);
     return transactions;
   }
 
-  function escapeHtml(str) {
-    return String(str).replace(/[&<>"']/g, c =>
-      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  function renderCategoryDropdowns() {
+    const catSelect = document.getElementById('category');
+    const subParent = document.getElementById('sub-parent');
+    const catNames = Object.keys(categories);
+
+    const currentCat = catSelect.value;
+    catSelect.innerHTML = catNames.map(n =>
+      '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + '</option>').join('');
+    if (catNames.includes(currentCat)) catSelect.value = currentCat;
+
+    subParent.innerHTML = catNames.map(n =>
+      '<option value="' + escapeHtml(n) + '">' + escapeHtml(n) + '</option>').join('');
+
+    renderSubcategoryDropdown();
   }
 
-  function render() {
+  function renderSubcategoryDropdown() {
+    const cat = document.getElementById('category').value;
+    const subRow = document.getElementById('subcat-row');
+    const subSelect = document.getElementById('subcategory');
+    const subs = categories[cat] || [];
+
+    if (subs.length === 0) {
+      subRow.style.display = 'none';
+      return;
+    }
+    subRow.style.display = 'grid';
+    subSelect.innerHTML = '<option value="">— none —</option>' +
+      subs.map(s => '<option value="' + escapeHtml(s) + '">' + escapeHtml(s) + '</option>').join('');
+  }
+
+  function renderManagePanel() {
+    const list = document.getElementById('cat-manage-list');
+    const names = Object.keys(categories);
+
+    list.innerHTML = names.map(name => {
+      const subs = categories[name] || [];
+      const count = transactions.filter(t => t.category === name).length;
+      const isOther = name === 'Other';
+
+      let subPills = '';
+      if (subs.length > 0) {
+        subPills = '<div class="sub-pill-wrap">' +
+          subs.map(s => '<span class="sub-pill">' + escapeHtml(s) +
+            '<button type="button" class="sub-pill-x" data-action="del-sub" data-cat="' + escapeHtml(name) + '" data-sub="' + escapeHtml(s) + '" aria-label="Remove">×</button></span>'
+          ).join('') +
+          '</div>';
+      }
+
+      const deleteBtn = isOther ? '' :
+        '<div style="margin-top: 6px;"><button type="button" class="del-cat-btn" data-action="del-cat" data-cat="' + escapeHtml(name) + '">Remove category</button></div>';
+
+      return '<div class="cat-manage-section">' +
+        '<div class="cat-manage-head">' +
+          '<div class="cat-manage-name">' + escapeHtml(name) + '</div>' +
+          '<div class="cat-manage-meta">' + count + ' ' + (count === 1 ? 'entry' : 'entries') + ' · ' + subs.length + ' ' + (subs.length === 1 ? 'sub' : 'subs') + '</div>' +
+        '</div>' +
+        subPills +
+        deleteBtn +
+      '</div>';
+    }).join('');
+
+    // Wire up delete buttons fresh each render
+    list.querySelectorAll('[data-action="del-sub"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = btn.getAttribute('data-cat');
+        const sub = btn.getAttribute('data-sub');
+        deleteSub(cat, sub);
+      });
+    });
+    list.querySelectorAll('[data-action="del-cat"]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const cat = btn.getAttribute('data-cat');
+        deleteCategory(cat);
+      });
+    });
+  }
+
+  function addCategory() {
+    const input = document.getElementById('new-cat-name');
+    const name = input.value.trim();
+    if (!name) { showToast('Enter a name'); return; }
+    if (categories[name]) { showToast('Already exists'); return; }
+    categories[name] = [];
+    saveCategories();
+    input.value = '';
+    showToast('Added · ' + name);
+    renderAll();
+  }
+
+  function addSub() {
+    const parent = document.getElementById('sub-parent').value;
+    const input = document.getElementById('new-sub-name');
+    const name = input.value.trim();
+    if (!name) { showToast('Enter a name'); return; }
+    if (!categories[parent]) return;
+    if (categories[parent].includes(name)) { showToast('Already exists'); return; }
+    categories[parent].push(name);
+    saveCategories();
+    input.value = '';
+    showToast('Added · ' + name);
+    renderAll();
+  }
+
+  async function deleteSub(cat, sub) {
+    const ok = await showConfirm(
+      'Remove "' + sub + '"?',
+      'It will disappear from the dropdown. Existing entries with this label will keep it.'
+    );
+    if (!ok) return;
+    if (categories[cat]) {
+      categories[cat] = categories[cat].filter(s => s !== sub);
+      saveCategories();
+      showToast('Removed');
+      renderAll();
+    }
+  }
+
+  async function deleteCategory(name) {
+    const count = transactions.filter(t => t.category === name).length;
+    const body = count > 0
+      ? count + ' existing ' + (count === 1 ? 'entry' : 'entries') + ' will be moved to "Other". This cannot be undone.'
+      : 'This cannot be undone.';
+    const ok = await showConfirm('Remove "' + name + '"?', body);
+    if (!ok) return;
+
+    transactions = transactions.map(t =>
+      t.category === name ? Object.assign({}, t, { category: 'Other', subcategory: '' }) : t
+    );
+    delete categories[name];
+    saveData();
+    saveCategories();
+    showToast('Removed · ' + name);
+    renderAll();
+  }
+
+  function renderProjections() {
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+    const monthTxns = transactions.filter(t => t.date >= monthStart);
+    const monthTotal = monthTxns.reduce((s, t) => s + t.amount, 0);
+    const dayOfMonth = now.getDate();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+
+    const dailyAvg = monthTotal / dayOfMonth;
+    const projMonth = dailyAvg * daysInMonth;
+    const projWeek = dailyAvg * 7;
+
+    document.getElementById('proj-month').textContent = fmt(projMonth);
+    document.getElementById('proj-week').textContent = fmt(projWeek);
+
+    const sub = document.getElementById('proj-sub');
+    if (monthTxns.length === 0) {
+      sub.textContent = 'Add some entries to see projections.';
+    } else {
+      const remaining = projMonth - monthTotal;
+      sub.textContent = 'Day ' + dayOfMonth + ' of ' + daysInMonth + ' · ' + fmt(remaining) + ' more at this pace';
+    }
+  }
+
+  function renderAll() {
+    renderCategoryDropdowns();
+    renderManagePanel();
+    renderProjections();
+    renderSummary();
+    renderCategoryBreakdown();
+    renderTransactions();
+  }
+
+  function renderSummary() {
     const today = todayISO();
     const dObj = new Date();
     document.getElementById('today-date').textContent =
@@ -565,6 +815,13 @@
     document.getElementById('month-total').textContent = fmt(monthTotal);
     const dayOfMonth = now.getDate();
     document.getElementById('month-avg').textContent = fmt(monthTotal / dayOfMonth) + ' / day avg';
+  }
+
+  function renderCategoryBreakdown() {
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+    const monthTxns = transactions.filter(t => t.date >= monthStart);
+    const monthTotal = monthTxns.reduce((s, t) => s + t.amount, 0);
 
     const catMap = {};
     monthTxns.forEach(t => {
@@ -575,22 +832,23 @@
 
     if (cats.length === 0) {
       catList.innerHTML = '<div class="empty"><div class="empty-mark">—</div><p>Nothing yet this month</p></div>';
-    } else {
-      const max = cats[0][1];
-      catList.innerHTML = cats.map(([name, amt]) => {
-        const pct = ((amt / monthTotal) * 100).toFixed(0);
-        const barWidth = ((amt / max) * 100).toFixed(0);
-        return `
-          <div class="cat-row">
-            <div class="cat-name">${escapeHtml(name)}</div>
-            <div class="cat-amount">${fmt(amt)}</div>
-            <div class="cat-pct">${pct}%</div>
-            <div class="cat-bar-wrap"><div class="cat-bar" style="width:${barWidth}%"></div></div>
-          </div>
-        `;
-      }).join('');
+      return;
     }
 
+    const max = cats[0][1];
+    catList.innerHTML = cats.map(([name, amt]) => {
+      const pct = ((amt / monthTotal) * 100).toFixed(0);
+      const barWidth = ((amt / max) * 100).toFixed(0);
+      return '<div class="cat-row">' +
+        '<div class="cat-name">' + escapeHtml(name) + '</div>' +
+        '<div class="cat-amount">' + fmt(amt) + '</div>' +
+        '<div class="cat-pct">' + pct + '%</div>' +
+        '<div class="cat-bar-wrap"><div class="cat-bar" style="width:' + barWidth + '%"></div></div>' +
+      '</div>';
+    }).join('');
+  }
+
+  function renderTransactions() {
     const filtered = getFiltered();
     document.getElementById('txn-count').textContent =
       filtered.length === 1 ? '1 entry' : filtered.length + ' entries';
@@ -612,48 +870,50 @@
     txnContainer.innerHTML = sortedDates.map(date => {
       const dayTxns = grouped[date].sort((a,b) => b.id - a.id);
       const dayTotal = dayTxns.reduce((s, t) => s + t.amount, 0);
-      return `
-        <div class="day-group">
-          <div class="day-header">
-            <div class="day-date">${formatDate(date)}</div>
-            <div class="day-total">${fmt(dayTotal)}</div>
-          </div>
-          ${dayTxns.map(t => `
-            <div class="txn">
-              <div class="txn-main">
-                <div class="txn-desc">${escapeHtml(t.description || t.category)}</div>
-                <div class="txn-cat">${escapeHtml(t.category)}</div>
-              </div>
-              <div class="txn-amount">${fmt(t.amount)}</div>
-              <button class="txn-del" data-id="${t.id}" aria-label="Delete">×</button>
-            </div>
-          `).join('')}
-        </div>
-      `;
+      return '<div class="day-group">' +
+        '<div class="day-header">' +
+          '<div class="day-date">' + formatDate(date) + '</div>' +
+          '<div class="day-total">' + fmt(dayTotal) + '</div>' +
+        '</div>' +
+        dayTxns.map(t => {
+          const catLabel = t.subcategory
+            ? escapeHtml(t.category) + ' · ' + escapeHtml(t.subcategory)
+            : escapeHtml(t.category);
+          return '<div class="txn">' +
+            '<div class="txn-main">' +
+              '<div class="txn-desc">' + escapeHtml(t.description || t.category) + '</div>' +
+              '<div class="txn-cat">' + catLabel + '</div>' +
+            '</div>' +
+            '<div class="txn-amount">' + fmt(t.amount) + '</div>' +
+            '<button type="button" class="txn-del" data-id="' + t.id + '" aria-label="Delete">×</button>' +
+          '</div>';
+        }).join('') +
+      '</div>';
     }).join('');
 
     document.querySelectorAll('.txn-del').forEach(btn => {
-      btn.addEventListener('click', () => deleteTxn(Number(btn.dataset.id)));
+      btn.addEventListener('click', () => deleteTxn(Number(btn.getAttribute('data-id'))));
     });
   }
 
   function addTxn() {
     const amount = parseFloat(document.getElementById('amount').value);
     const category = document.getElementById('category').value;
+    const subSelect = document.getElementById('subcategory');
+    const subRow = document.getElementById('subcat-row');
+    const subcategory = subRow.style.display !== 'none' ? subSelect.value : '';
     const description = document.getElementById('description').value.trim();
     const date = document.getElementById('date').value || todayISO();
 
-    if (!amount || amount <= 0) {
-      showToast('Enter an amount');
-      return;
-    }
+    if (!amount || amount <= 0) { showToast('Enter an amount'); return; }
 
     transactions.push({
       id: Date.now(),
-      amount,
-      category,
-      description,
-      date
+      amount: amount,
+      category: category,
+      subcategory: subcategory || '',
+      description: description,
+      date: date
     });
 
     saveData();
@@ -661,29 +921,46 @@
     document.getElementById('description').value = '';
     document.getElementById('amount').focus();
     showToast('Saved · ' + fmt(amount));
-    render();
+    renderAll();
   }
 
   function deleteTxn(id) {
     transactions = transactions.filter(t => t.id !== id);
     saveData();
     showToast('Removed');
-    render();
+    renderAll();
   }
 
-  function resetAll() {
-    if (!confirm('Delete all entries? This cannot be undone.')) return;
+  async function resetAll() {
+    const ok = await showConfirm(
+      'Clear all entries?',
+      'This will delete every transaction. Custom categories will be kept. Cannot be undone.'
+    );
+    if (!ok) return;
     transactions = [];
-    try {
-      localStorage.removeItem(STORAGE_KEY);
-    } catch (e) {}
+    try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
     showToast('All cleared');
-    render();
+    renderAll();
   }
 
+  // Wire up
   document.getElementById('date').value = todayISO();
   document.getElementById('add-btn').addEventListener('click', addTxn);
   document.getElementById('reset-btn').addEventListener('click', resetAll);
+  document.getElementById('category').addEventListener('change', renderSubcategoryDropdown);
+  document.getElementById('add-cat-btn').addEventListener('click', addCategory);
+  document.getElementById('add-sub-btn').addEventListener('click', addSub);
+  document.getElementById('manage-toggle').addEventListener('click', () => {
+    const panel = document.getElementById('manage-panel');
+    const link = document.getElementById('manage-toggle');
+    panel.classList.toggle('open');
+    link.textContent = panel.classList.contains('open')
+      ? 'Hide manage panel ↑'
+      : 'Manage categories ↓';
+    if (panel.classList.contains('open')) {
+      setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
+  });
 
   document.getElementById('amount').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') document.getElementById('description').focus();
@@ -691,13 +968,19 @@
   document.getElementById('description').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTxn();
   });
+  document.getElementById('new-cat-name').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addCategory();
+  });
+  document.getElementById('new-sub-name').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addSub();
+  });
 
   document.querySelectorAll('.chip').forEach(chip => {
     chip.addEventListener('click', () => {
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      currentFilter = chip.dataset.filter;
-      render();
+      currentFilter = chip.getAttribute('data-filter');
+      renderTransactions();
     });
   });
 
