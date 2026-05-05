@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="Ledger" />
+<meta name="theme-color" content="#1a1614" />
+<title>Ledger — Personal Spending</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1614;
+    --paper: #f4efe6;
+    --paper-dark: #e8dfd0;
+    --rule: #2a221e;
+    --accent: #c8421f;
+    --accent-soft: #e8a892;
+    --green: #4a6b3a;
+    --muted: #6b6058;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    min-height: 100vh;
+    padding: 24px 16px 100px;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(200,66,31,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(74,107,58,0.05) 0%, transparent 40%);
+  }
+
+  .container { max-width: 720px; margin: 0 auto; }
+
+  header {
+    border-bottom: 2px solid var(--rule);
+    padding-bottom: 16px;
+    margin-bottom: 24px;
+  }
+  .masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 800;
+    font-size: clamp(44px, 12vw, 72px);
+    letter-spacing: -0.04em;
+    line-height: 0.9;
+    font-style: italic;
+  }
+  .tagline {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.08em;
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+  .card {
+    background: var(--paper-dark);
+    border: 1.5px solid var(--rule);
+    padding: 14px 14px 12px;
+  }
+  .card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .card-value {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .card-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .add-form {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 18px 16px;
+    margin-bottom: 28px;
+    border: 1.5px solid var(--rule);
+  }
+  .form-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    opacity: 0.7;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .form-row.full { grid-template-columns: 1fr; }
+  .field { display: flex; flex-direction: column; }
+  .field label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin-bottom: 4px;
+  }
+  input, select {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--accent-soft);
+    color: var(--paper);
+    font-family: 'Fraunces', serif;
+    font-size: 17px;
+    padding: 6px 0;
+    outline: none;
+    width: 100%;
+    border-radius: 0;
+  }
+  input:focus, select:focus { border-bottom-color: var(--accent); }
+  input::placeholder { color: rgba(232,168,146,0.4); }
+  select option { background: var(--ink); color: var(--paper); }
+
+  button {
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    padding: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    width: 100%;
+    margin-top: 12px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+  button:hover { background: #a83417; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 6px;
+    margin-bottom: 14px;
+    margin-top: 4px;
+  }
+  .section-title {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+  .section-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .categories { margin-bottom: 32px; }
+  .cat-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dotted rgba(42,34,30,0.2);
+    gap: 12px;
+  }
+  .cat-name {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .cat-bar-wrap {
+    grid-column: 1 / -1;
+    height: 4px;
+    background: rgba(42,34,30,0.08);
+    margin-top: 6px;
+    position: relative;
+  }
+  .cat-bar {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.5s ease;
+  }
+  .cat-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: right;
+  }
+  .cat-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    text-align: right;
+    grid-column: 2;
+  }
+
+  .day-group { margin-bottom: 22px; }
+  .day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .day-date {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  .day-total {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .txn {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dotted rgba(42,34,30,0.15);
+  }
+  .txn-main { min-width: 0; }
+  .txn-desc {
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .txn-cat {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .txn-amount {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .txn-del {
+    background: transparent;
+    color: var(--muted);
+    border: none;
+    padding: 4px 6px;
+    margin: 0;
+    width: auto;
+    font-size: 16px;
+    letter-spacing: 0;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.2s, color 0.2s;
+  }
+  .txn-del:hover {
+    opacity: 1;
+    color: var(--accent);
+    background: transparent;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--muted);
+  }
+  .empty-mark {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 36px;
+    margin-bottom: 8px;
+    opacity: 0.4;
+  }
+  .empty p {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .filter-bar {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 6px 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: var(--ink);
+    width: auto;
+    margin: 0;
+  }
+  .chip.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .chip:hover { background: rgba(42,34,30,0.08); }
+  .chip.active:hover { background: var(--ink); }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--ink);
+    color: var(--paper);
+    padding: 12px 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: transform 0.3s ease;
+    z-index: 100;
+    border: 1px solid var(--accent);
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  .reset-link {
+    text-align: center;
+    margin-top: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .reset-link:hover { color: var(--accent); }
+
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="masthead">
+      <span>№ 001 · GBP</span>
+      <span id="today-date">—</span>
+    </div>
+    <h1>Ledger.</h1>
+    <div class="tagline">A record of every pound spent — kept honestly.</div>
+  </header>
+
+  <div class="summary">
+    <div class="card">
+      <div class="card-label">Today</div>
+      <div class="card-value" id="today-total">£0.00</div>
+      <div class="card-sub" id="today-count">no entries</div>
+    </div>
+    <div class="card">
+      <div class="card-label">This month</div>
+      <div class="card-value" id="month-total">£0.00</div>
+      <div class="card-sub" id="month-avg">£0.00 / day avg</div>
+    </div>
+  </div>
+
+  <div class="add-form">
+    <div class="form-title">— New entry</div>
+    <div class="form-row">
+      <div class="field">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" step="0.01" min="0" placeholder="0.00" inputmode="decimal" />
+      </div>
+      <div class="field">
+        <label for="category">Category</label>
+        <select id="category">
+          <option value="Groceries">Groceries</option>
+          <option value="Eating Out">Eating Out</option>
+          <option value="Transport">Transport</option>
+          <option value="Bills">Bills</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Health">Health</option>
+          <option value="Coffee">Coffee</option>
+          <option value="Subscriptions">Subscriptions</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row full">
+      <div class="field">
+        <label for="description">What was it?</label>
+        <input type="text" id="description" placeholder="Tesco, train ticket, lunch..." maxlength="60" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="field">
+        <label for="date">Date</label>
+        <input type="date" id="date" />
+      </div>
+    </div>
+    <button id="add-btn">Record entry</button>
+  </div>
+
+  <div class="categories">
+    <div class="section-head">
+      <div class="section-title">By category</div>
+      <div class="section-meta">This month</div>
+    </div>
+    <div id="categories-list">
+      <div class="empty">
+        <div class="empty-mark">—</div>
+        <p>Nothing yet</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="section-title">Recent activity</div>
+    <div class="section-meta" id="txn-count">0 entries</div>
+  </div>
+
+  <div class="filter-bar">
+    <button class="chip active" data-filter="all">All time</button>
+    <button class="chip" data-filter="today">Today</button>
+    <button class="chip" data-filter="week">7 days</button>
+    <button class="chip" data-filter="month">This month</button>
+  </div>
+
+  <div id="transactions">
+    <div class="loading">Loading your records…</div>
+  </div>
+
+  <div class="reset-link" id="reset-btn">Clear all data</div>
+</div>
+
+<div class="toast" id="toast">Saved</div>
+
+<script>
+  const STORAGE_KEY = 'ledger:transactions';
+  let transactions = [];
+  let currentFilter = 'all';
+
+  const fmt = (n) => '£' + Number(n).toFixed(2);
+  const todayISO = () => new Date().toISOString().slice(0, 10);
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 1800);
+  }
+
+  function loadData() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      transactions = raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      transactions = [];
+    }
+    render();
+  }
+
+  function saveData() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions));
+    } catch (e) {
+      showToast('Save failed');
+    }
+  }
+
+  function formatDate(iso) {
+    const d = new Date(iso + 'T00:00:00');
+    const today = todayISO();
+    const yest = new Date(Date.now() - 86400000).toISOString().slice(0,10);
+    if (iso === today) return 'Today';
+    if (iso === yest) return 'Yesterday';
+    return d.toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' });
+  }
+
+  function getFiltered() {
+    const today = todayISO();
+    const now = new Date();
+    const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString().slice(0,10);
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+
+    if (currentFilter === 'today') return transactions.filter(t => t.date === today);
+    if (currentFilter === 'week') return transactions.filter(t => t.date >= weekAgo);
+    if (currentFilter === 'month') return transactions.filter(t => t.date >= monthStart);
+    return transactions;
+  }
+
+  function escapeHtml(str) {
+    return String(str).replace(/[&<>"']/g, c =>
+      ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function render() {
+    const today = todayISO();
+    const dObj = new Date();
+    document.getElementById('today-date').textContent =
+      dObj.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }).toUpperCase();
+
+    const todayTxns = transactions.filter(t => t.date === today);
+    const todayTotal = todayTxns.reduce((s, t) => s + t.amount, 0);
+    document.getElementById('today-total').textContent = fmt(todayTotal);
+    document.getElementById('today-count').textContent =
+      todayTxns.length === 0 ? 'no entries' :
+      todayTxns.length === 1 ? '1 entry' : todayTxns.length + ' entries';
+
+    const now = new Date();
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString().slice(0,10);
+    const monthTxns = transactions.filter(t => t.date >= monthStart);
+    const monthTotal = monthTxns.reduce((s, t) => s + t.amount, 0);
+    document.getElementById('month-total').textContent = fmt(monthTotal);
+    const dayOfMonth = now.getDate();
+    document.getElementById('month-avg').textContent = fmt(monthTotal / dayOfMonth) + ' / day avg';
+
+    const catMap = {};
+    monthTxns.forEach(t => {
+      catMap[t.category] = (catMap[t.category] || 0) + t.amount;
+    });
+    const cats = Object.entries(catMap).sort((a,b) => b[1] - a[1]);
+    const catList = document.getElementById('categories-list');
+
+    if (cats.length === 0) {
+      catList.innerHTML = '<div class="empty"><div class="empty-mark">—</div><p>Nothing yet this month</p></div>';
+    } else {
+      const max = cats[0][1];
+      catList.innerHTML = cats.map(([name, amt]) => {
+        const pct = ((amt / monthTotal) * 100).toFixed(0);
+        const barWidth = ((amt / max) * 100).toFixed(0);
+        return `
+          <div class="cat-row">
+            <div class="cat-name">${escapeHtml(name)}</div>
+            <div class="cat-amount">${fmt(amt)}</div>
+            <div class="cat-pct">${pct}%</div>
+            <div class="cat-bar-wrap"><div class="cat-bar" style="width:${barWidth}%"></div></div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const filtered = getFiltered();
+    document.getElementById('txn-count').textContent =
+      filtered.length === 1 ? '1 entry' : filtered.length + ' entries';
+
+    const txnContainer = document.getElementById('transactions');
+    if (filtered.length === 0) {
+      txnContainer.innerHTML = '<div class="empty"><div class="empty-mark">—</div><p>No entries to show</p></div>';
+      return;
+    }
+
+    const grouped = {};
+    filtered.forEach(t => {
+      if (!grouped[t.date]) grouped[t.date] = [];
+      grouped[t.date].push(t);
+    });
+
+    const sortedDates = Object.keys(grouped).sort().reverse();
+
+    txnContainer.innerHTML = sortedDates.map(date => {
+      const dayTxns = grouped[date].sort((a,b) => b.id - a.id);
+      const dayTotal = dayTxns.reduce((s, t) => s + t.amount, 0);
+      return `
+        <div class="day-group">
+          <div class="day-header">
+            <div class="day-date">${formatDate(date)}</div>
+            <div class="day-total">${fmt(dayTotal)}</div>
+          </div>
+          ${dayTxns.map(t => `
+            <div class="txn">
+              <div class="txn-main">
+                <div class="txn-desc">${escapeHtml(t.description || t.category)}</div>
+                <div class="txn-cat">${escapeHtml(t.category)}</div>
+              </div>
+              <div class="txn-amount">${fmt(t.amount)}</div>
+              <button class="txn-del" data-id="${t.id}" aria-label="Delete">×</button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }).join('');
+
+    document.querySelectorAll('.txn-del').forEach(btn => {
+      btn.addEventListener('click', () => deleteTxn(Number(btn.dataset.id)));
+    });
+  }
+
+  function addTxn() {
+    const amount = parseFloat(document.getElementById('amount').value);
+    const category = document.getElementById('category').value;
+    const description = document.getElementById('description').value.trim();
+    const date = document.getElementById('date').value || todayISO();
+
+    if (!amount || amount <= 0) {
+      showToast('Enter an amount');
+      return;
+    }
+
+    transactions.push({
+      id: Date.now(),
+      amount,
+      category,
+      description,
+      date
+    });
+
+    saveData();
+    document.getElementById('amount').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('amount').focus();
+    showToast('Saved · ' + fmt(amount));
+    render();
+  }
+
+  function deleteTxn(id) {
+    transactions = transactions.filter(t => t.id !== id);
+    saveData();
+    showToast('Removed');
+    render();
+  }
+
+  function resetAll() {
+    if (!confirm('Delete all entries? This cannot be undone.')) return;
+    transactions = [];
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (e) {}
+    showToast('All cleared');
+    render();
+  }
+
+  document.getElementById('date').value = todayISO();
+  document.getElementById('add-btn').addEventListener('click', addTxn);
+  document.getElementById('reset-btn').addEventListener('click', resetAll);
+
+  document.getElementById('amount').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') document.getElementById('description').focus();
+  });
+  document.getElementById('description').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') addTxn();
+  });
+
+  document.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentFilter = chip.dataset.filter;
+      render();
+    });
+  });
+
+  loadData();
+</script>
+</body>
+</html>
